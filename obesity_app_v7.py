@@ -84,7 +84,7 @@ FEAT_LABELS = {
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Obesity.csv")
+    df = pd.read_csv("data/Obesity.csv")
     df["BMI"] = (df["Weight"] / (df["Height"] ** 2)).round(2)
     df["Obesity_Label"] = df["Obesity"].map(OBESITY_LABELS)
     for col in ["FCVC","NCP","CH2O","FAF","TUE"]:
@@ -129,8 +129,15 @@ def train_model(df):
                 shap_vals=shap_vals, X_shap=X_test[:300])
 
 df = load_data()
-with st.spinner("Treinando modelo XGBoost..."):
-    res = train_model(df)
+import pickle, os
+
+@st.cache_resource
+def load_model():
+    with open("models/model.pkl", "rb") as f:
+        return pickle.load(f)
+
+with st.spinner("Carregando modelo..."):
+    res = load_model()
 
 # ── SIDEBAR ───────────────────────────────────────────────────────────────────
 with st.sidebar:
