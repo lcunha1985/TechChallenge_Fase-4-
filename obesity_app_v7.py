@@ -54,7 +54,7 @@ OBESITY_LABELS = {
     "Obesity_Type_III":"Obesidade III",
 }
 OB_SHORT = ["Ab.Peso","Peso Norm.","Sobr.I","Sobr.II","Ob.I","Ob.II","Ob.III"]
-OB_COLORS = ["#4D9DE0","#00CEC9","#FDCB6E","#E17055","#ED145B","#6C5CE7","#2D3436"]
+OB_COLORS = ["#4D9DE0","#2ECC71","#F39C12","#E67E22","#ED145B","#C0392B","#7B0D1E"]
 
 # IMC removido das features de treino e predicao
 ALL_FEATURES = [
@@ -256,8 +256,10 @@ st.markdown(f"""<style>
     border:1px solid {brd} !important;
   }}
 
-  /* Multiselect container — altura expandida para caber 7 itens */
-  .stMultiSelect > div > div {{
+  /* Multiselect container — fundo escuro em todos os niveis */
+  .stMultiSelect > div > div,
+  .stMultiSelect > div > div > div,
+  .stMultiSelect > div > div > div > div {{
     background:{ibg} !important;border:1px solid {brd} !important;border-radius:6px !important;
     max-height:220px !important;overflow-y:auto !important;
   }}
@@ -320,21 +322,6 @@ st.markdown(f"""<style>
   }}
   .stButton button:hover {{background:{acc2}}}
   .stCaption, small {{color:{acc} !important}}
-
-  /* Cabeçalho branco do Streamlit → fundo do app */
-  header[data-testid="stHeader"] {{
-    background:{bg} !important;
-    border-bottom:1px solid {brd} !important;
-  }}
-  /* Toolbar (botões Share, Star, etc) → fundo do app */
-  [data-testid="stToolbar"] {{
-    background:{bg} !important;
-  }}
-  /* Decoração superior (linha branca) */
-  [data-testid="stDecoration"] {{
-    background:{bg} !important;
-    display:none;
-  }}
 </style>""", unsafe_allow_html=True)
 
 # ── HEADER ────────────────────────────────────────────────────────────────────
