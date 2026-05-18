@@ -256,25 +256,9 @@ st.markdown(f"""<style>
     border:1px solid {brd} !important;
   }}
 
-  /* Multiselect container — fundo escuro forçado em todos os niveis */
-  .stMultiSelect > div > div,
-  .stMultiSelect > div > div > div,
-  .stMultiSelect > div > div > div > div,
-  .stMultiSelect [data-baseweb="select"] > div,
-  .stMultiSelect [data-baseweb="base-input"],
-  .stMultiSelect [class*="ValueContainer"],
-  .stMultiSelect [class*="InputContainer"] {{
-    background:{ibg} !important;
-    border-color:{brd} !important;
-    border-radius:6px !important;
-    max-height:220px !important;
-    overflow-y:auto !important;
-  }}
-  /* Slider thumb rosa */
-  [data-testid="stSlider"] [role="slider"] {{
-    background:#ED145B !important;
-    border-color:#ED145B !important;
-    box-shadow:0 0 0 3px #ED145B44 !important;
+  /* Multiselect container */
+  .stMultiSelect > div > div {{
+    background:{ibg} !important;border:1px solid {brd} !important;border-radius:6px !important;
   }}
   /* Tags dentro do multiselect */
   .stMultiSelect span[data-baseweb="tag"] {{
@@ -285,6 +269,10 @@ st.markdown(f"""<style>
   .stMultiSelect span[data-baseweb="tag"] span {{color:{ttxt} !important}}
   /* X da tag */
   .stMultiSelect span[data-baseweb="tag"] svg {{fill:{acc} !important}}
+  /* X de limpar e seta dropdown do multiselect — rosa */
+  .stMultiSelect svg {{fill:{acc} !important}}
+  .stMultiSelect [data-testid="stMultiSelectClearBtn"] svg {{fill:{acc} !important}}
+  .stMultiSelect button svg {{fill:{acc} !important}}
   /* Placeholder e texto digitado */
   .stMultiSelect input {{color:{itxt} !important;background:transparent !important}}
 
