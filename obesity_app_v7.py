@@ -996,7 +996,7 @@ with aba_feat:
         st.warning(f"SHAP global: {e}")
 
     st.markdown(subtitle("Relatorio de Classificacao por Classe"), unsafe_allow_html=True)
-    rep = res["report"]
+    rep = res.get("report", {})
     rep_rows = []
     for cls in res["le_target"].classes_:
         r = rep.get(str(cls),{})
