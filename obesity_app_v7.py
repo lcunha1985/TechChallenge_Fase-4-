@@ -256,9 +256,8 @@ st.markdown(f"""<style>
     border:1px solid {brd} !important;
   }}
 
-  /* Multiselect container — fundo escuro */
-  .stMultiSelect > div > div,
-  .stMultiSelect > div > div > div {{
+  /* Multiselect container */
+  .stMultiSelect > div > div {{
     background:{ibg} !important;border:1px solid {brd} !important;border-radius:6px !important;
   }}
   /* Tags dentro do multiselect */
@@ -268,14 +267,12 @@ st.markdown(f"""<style>
   }}
   /* Texto dentro da tag */
   .stMultiSelect span[data-baseweb="tag"] span {{color:{ttxt} !important}}
-  /* X dentro da tag — rosa */
+  /* X da tag */
   .stMultiSelect span[data-baseweb="tag"] svg {{fill:{acc} !important}}
-  /* Botão X de limpar tudo — rosa, sem afetar fundo */
-  .stMultiSelect button[aria-label*="Clear"] svg,
-  .stMultiSelect button[title*="Clear"] svg,
-  .stMultiSelect [role="button"] svg {{fill:{acc} !important}}
-  /* Seta dropdown — rosa */
-  .stMultiSelect [data-baseweb="select"] svg:last-of-type {{fill:{acc} !important}}
+  /* X de limpar e seta dropdown do multiselect — rosa */
+  .stMultiSelect svg {{fill:{acc} !important}}
+  .stMultiSelect [data-testid="stMultiSelectClearBtn"] svg {{fill:{acc} !important}}
+  .stMultiSelect button svg {{fill:{acc} !important}}
   /* Placeholder e texto digitado */
   .stMultiSelect input {{color:{itxt} !important;background:transparent !important}}
 
