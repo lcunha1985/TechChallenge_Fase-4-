@@ -256,9 +256,25 @@ st.markdown(f"""<style>
     border:1px solid {brd} !important;
   }}
 
-  /* Multiselect container */
-  .stMultiSelect > div > div {{
-    background:{ibg} !important;border:1px solid {brd} !important;border-radius:6px !important;
+  /* Multiselect container — fundo escuro forçado em todos os niveis */
+  .stMultiSelect > div > div,
+  .stMultiSelect > div > div > div,
+  .stMultiSelect > div > div > div > div,
+  .stMultiSelect [data-baseweb="select"] > div,
+  .stMultiSelect [data-baseweb="base-input"],
+  .stMultiSelect [class*="ValueContainer"],
+  .stMultiSelect [class*="InputContainer"] {{
+    background:{ibg} !important;
+    border-color:{brd} !important;
+    border-radius:6px !important;
+    max-height:220px !important;
+    overflow-y:auto !important;
+  }}
+  /* Slider thumb rosa */
+  [data-testid="stSlider"] [role="slider"] {{
+    background:#ED145B !important;
+    border-color:#ED145B !important;
+    box-shadow:0 0 0 3px #ED145B44 !important;
   }}
   /* Tags dentro do multiselect */
   .stMultiSelect span[data-baseweb="tag"] {{
