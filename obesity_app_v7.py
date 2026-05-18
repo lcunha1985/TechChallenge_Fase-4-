@@ -256,12 +256,9 @@ st.markdown(f"""<style>
     border:1px solid {brd} !important;
   }}
 
-  /* Multiselect container — fundo escuro em todos os niveis */
-  .stMultiSelect > div > div,
-  .stMultiSelect > div > div > div,
-  .stMultiSelect > div > div > div > div {{
+  /* Multiselect container */
+  .stMultiSelect > div > div {{
     background:{ibg} !important;border:1px solid {brd} !important;border-radius:6px !important;
-    max-height:220px !important;overflow-y:auto !important;
   }}
   /* Tags dentro do multiselect */
   .stMultiSelect span[data-baseweb="tag"] {{
@@ -322,6 +319,32 @@ st.markdown(f"""<style>
   }}
   .stButton button:hover {{background:{acc2}}}
   .stCaption, small {{color:{acc} !important}}
+
+  /* Slider — thumb e track em rosa forte */
+  [data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {{
+    background:{acc} !important;
+    border-color:{acc} !important;
+  }}
+  [data-testid="stSlider"] div[data-baseweb="slider"] > div:nth-child(1) > div:nth-child(2) {{
+    background:{acc} !important;
+  }}
+  [data-testid="stSlider"] div[class*="thumb"] {{
+    background:{acc} !important;
+    border-color:{acc} !important;
+    box-shadow:0 0 0 4px {acc}33 !important;
+  }}
+  [data-testid="stSlider"] div[class*="track"] > div {{
+    background:{acc} !important;
+  }}
+
+  /* Header e toolbar — fundo igual ao app */
+  header[data-testid="stHeader"],
+  [data-testid="stToolbar"],
+  [data-testid="stDecoration"] {{
+    background:{bg} !important;
+    border-bottom:1px solid {brd} !important;
+  }}
+  [data-testid="stDecoration"] {{ display:none !important; }}
 </style>""", unsafe_allow_html=True)
 
 # ── HEADER ────────────────────────────────────────────────────────────────────
