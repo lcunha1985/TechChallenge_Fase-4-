@@ -324,6 +324,38 @@ st.markdown(f"""<style>
   .stButton button:hover {{background:{acc2}}}
   .stCaption, small {{color:{acc} !important}}
 
+  /* Dataframe — fundo cinza escuro, texto branco */
+  [data-testid="stDataFrame"] {{
+    background:{card} !important;
+    border-radius:8px !important;
+    overflow:hidden !important;
+  }}
+  [data-testid="stDataFrame"] table {{
+    background:{card} !important;
+  }}
+  [data-testid="stDataFrame"] thead tr th {{
+    background:{bg2} !important;
+    color:{acc} !important;
+    font-weight:700 !important;
+    border-bottom:1px solid {brd} !important;
+  }}
+  [data-testid="stDataFrame"] tbody tr td {{
+    background:{card} !important;
+    color:{txt} !important;
+    border-bottom:1px solid {brd} !important;
+  }}
+  [data-testid="stDataFrame"] tbody tr:hover td {{
+    background:{kbg} !important;
+  }}
+  /* iframe do dataframe */
+  [data-testid="stDataFrame"] iframe {{
+    filter: invert(0) !important;
+  }}
+  /* Scrollbar do dataframe */
+  [data-testid="stDataFrame"] ::-webkit-scrollbar {{
+    background:{bg2} !important;
+  }}
+
   /* Slider — thumb e track em rosa forte */
   [data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {{
     background:{acc} !important;
@@ -1037,7 +1069,17 @@ with aba_feat:
             "F1-Score": f"{r.get('f1-score',0):.3f}",
             "Suporte":  int(r.get("support",0)),
         })
-    st.dataframe(pd.DataFrame(rep_rows), use_container_width=True, hide_index=True)
+    df_rep = pd.DataFrame(rep_rows)
+    header_html = "".join([f'<th style="background:{T["bg2"]};color:{acc};padding:10px 16px;text-align:left;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid {brd}">{col}</th>' for col in df_rep.columns])
+    rows_html = ""
+    for _, row in df_rep.iterrows():
+        cells = "".join([f'<td style="background:{card};color:{txt};padding:10px 16px;font-size:13px;border-bottom:1px solid {brd}">{val}</td>' for val in row])
+        rows_html += f"<tr>{cells}</tr>"
+    st.markdown(
+        f'<table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden">'
+        f'<thead><tr>{header_html}</tr></thead>'
+        f'<tbody>{rows_html}</tbody>'
+        f'</table>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("Dashboard Preditivo de Obesidade v5 | XGBoost + SHAP | FIAP POSTECH · Tech Challenge 4")
