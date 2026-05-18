@@ -1063,14 +1063,14 @@ with aba_feat:
     rep_rows = []
     for cls in res["le_target"].classes_:
         r = rep.get(str(cls),{})
-        p   = r.get('precision', 0);    ps = r.get('precision_std', 0)
-        rc  = r.get('recall', 0);       rs = r.get('recall_std', 0)
-        f1  = r.get('f1-score', 0);     fs = r.get('f1_std', 0)
+        p   = r.get('precision', 0)
+        rc  = r.get('recall', 0)
+        f1  = r.get('f1-score', 0)
         rep_rows.append({
             "Classe":   OBESITY_LABELS.get(cls,cls),
-            "Precisao": f"{p:.4f} ± {ps:.4f}",
-            "Recall":   f"{rc:.4f} ± {rs:.4f}",
-            "F1-Score": f"{f1:.4f} ± {fs:.4f}",
+            "Precisao": f"{p:.4f}",
+            "Recall":   f"{rc:.4f}",
+            "F1-Score": f"{f1:.4f}",
             "Suporte":  int(r.get("support",0)),
         })
     df_rep = pd.DataFrame(rep_rows)
